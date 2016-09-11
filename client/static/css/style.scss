@@ -1,0 +1,103 @@
+// @import "components/variables";
+// @import "components/mixins";
+
+// //boostrap file includes only grid system, forms and responsive utilities
+// // @import "../css/bootstrap.css";
+
+// @import "components/help-classes";
+
+// @import "components/fonts";
+// @import "components/icons";
+
+// @import "components/interface";
+
+// @import "components/base";
+
+// @import "pages/index";
+
+.header {
+	height: 100px;
+	background: #3f51b5;
+	color: white;
+	text-transform: uppercase;
+}
+
+.clearfix:before,
+.clearfix:after {
+
+content: " ";
+display: table;
+}
+
+.clearfix:after {
+
+clear: both;
+
+}
+
+.clearfix {
+
+*zoom: 1;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	width: 1100px;
+	margin: 0 auto;
+}
+
+.row {
+	width: 100%;
+}
+
+header {
+	height: 100px;
+	background-color: #414b85;
+	color: white;
+}
+
+.logo {
+	float: left;
+	h3 {
+		margin: 0;
+		text-transform: uppercase;
+	}
+}
+
+.user__wrap {
+	float: right;
+	.user__container {
+	}
+}
+
+.input__wrap {
+	float: left;
+}
+
+.buttons__wrap {
+	float: right;
+}
+
+// Для таблицы
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr {
+	border-bottom: 1px solid;
+}
+
+// для формы добавления/редактирования
+label {
+	display: block;
+}
+
+input {
+	display: block;
+}
+

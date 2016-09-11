@@ -1,0 +1,44 @@
+<section>
+	<div class="container">
+	
+		<div class="row">
+	    <h3>Courses</h3>
+		</div>
+			
+    <div class="row clearfix">
+	    <div class="input__wrap">
+	      <input type="text">
+	    </div>
+     		<div class="buttons__wrap">
+		      <button>Archive Selected</button>
+		      <button ng-click="tableCtrl.addNew()">Add New</button>
+       	</div>
+    </div>
+
+		<div class="row">
+			<table>
+				<thead>
+					<tr>
+						<td>Check</td>
+						<td>ID</td>
+						<td>Title</td>
+						<td>Author</td>
+						<td>Duration</td>
+						<td>Actions</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="(key, item) in tableCtrl.items">
+						<td><input type="checkbox" ng-model="item.archived"/></td>
+						<td>{{key}}</td>
+						<td><a href='{{item.link}}' target='_blank'>{{item.title}}</a></td>
+						<td>{{item.author}}</td>
+						<td>{{item.duration}}</td>
+						<td><button ng-click="tableCtrl.edit(item, key)">Edit</button>
+								<button ng-click="tableCtrl.delete(item, key)">Delete</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>

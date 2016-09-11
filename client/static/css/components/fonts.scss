@@ -1,0 +1,12 @@
+//adding fonts
+
+// Segoe Bold
+@include font-face( Segoe, "../fonts/SegoeUIBold/SegoeUIBold", 600, null, eot otf woff ttf svg);
+// SegoeLight
+@include font-face( Segoe, "../fonts/SegoeUILight/SegoeUILight", 300, null, eot otf woff ttf svg);
+// SegoeRegular
+@include font-face( Segoe, "../fonts/SegoeUIRegular/SegoeUIRegular", 400, null, eot otf woff ttf svg);
+// SegoeSemiBold
+@include font-face( Segoe, "../fonts/SegoeUISemiBold/SegoeUISemiBold", 500, null, eot otf woff ttf svg);
+// icons
+@include font-face (icons, "../fonts/icons/icons", null, null, eot woff ttf svg );

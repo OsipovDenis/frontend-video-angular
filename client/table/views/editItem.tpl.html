@@ -1,0 +1,33 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="add__item__wrap">
+				<div class="header__add__item">
+					<h3>Add New Course</h3>
+				</div>
+				<div class="add__content__wrap">
+					<label for="title">
+						Course Title *
+						<input type="text" placeholder="name" ng-model='editItemCtrl.video.title'>
+					</label>
+					<label for="link">
+						Course Link *
+						<input type="text" placeholder="link" ng-model='editItemCtrl.video.link'>
+					</label>
+					<label for="author">
+						Course Author
+						<input type="text" placeholder="author" ng-model='editItemCtrl.video.author'>
+					</label>
+					<label for="duration">
+						Course Duration
+						<input type="text" placeholder="duration" ng-model='editItemCtrl.video.duration'>
+					</label>
+					<div class="buttons__item">
+						<button ng-click="editItemCtrl.updateItem()">Add</button>
+						<button ng-click="editItemCtrl.cancel()">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

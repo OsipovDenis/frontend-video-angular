@@ -101,3 +101,10 @@ input {
 	display: block;
 }
 
+.archived {
+	pointer-events: none;
+}
+
+.unarchived {
+	pointer-events: auto;
+}

@@ -4,22 +4,25 @@ const tableService = function($http, $q) {
 
   var service = {
     getAllVideos: function() {
-      return $http.get('https://angular-video-service.firebaseio.com/videos.json').then(function(response) {
-        return response;
-      })
-      .then(function(response){
-        var data = response.data;
-        var reformattedArray = Object.keys(data).map(function(key) {
-          var tempObj = data[key];
-              tempObj.id = key;
-          return tempObj;
-        });
-        return $q.when(reformattedArray)
-      });
+      return $http.get('https://angular-video-service.firebaseio.com/videos.json').then( (response) => {
+                return response;
+              })
+              .then( (response) => {
+                var data = response.data;
+                var reformattedArray = Object.keys(data).map(function(key) {
+                  var tempObj = data[key];
+                      tempObj.id = key;
+                  return tempObj;
+                });
+                return $q.when(reformattedArray)
+              })
+              .catch( (status) => {
+                console.warn('Потеря связи с сервером!', status);
+              });
     },
     
     getVideo: function(id) {
-      return  $http.get('https://angular-video-service.firebaseio.com/videos.json').then(function(response) {
+      return  $http.get('https://angular-video-service.firebaseio.com/videos.json').then( (response) => {
                 return response;
               })
               .then( (resp) => {
@@ -55,6 +58,21 @@ const tableService = function($http, $q) {
               .catch( (status) => {
                 console.warn('Потеря связи с сервером!', status);
               })
+    },
+
+    toUpdateSomeVideos: function(arrToPushItems){
+      var arrForUpdate = [];
+      arrToPushItems.forEach( (item) => {
+        arrForUpdate.push(service.updateVideo(item.id, item));
+      })
+
+      return $q.all(arrForUpdate)
+              .then( (response) => {
+                return $q.when(response)
+              })
+              .catch( (status) => {
+                console.warn('Потеря связи с сервером!', status);
+              });
     }
 
   }

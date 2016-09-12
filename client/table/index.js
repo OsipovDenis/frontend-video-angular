@@ -12,17 +12,17 @@ table.config(($stateProvider) => {
 		})
 		.state('table', {
 			parent: 'mainHeader',
-			url: '/table',
+			url: '/items',
 			template: '<table-content></table-content>'
 		})
 		.state('addItem', {
 			parent: 'mainHeader',
-			url: '/table/add',
+			url: '/items/add',
 			template: '<add-item></add-item>'
 		})
 		.state('editItem', {
 			parent: 'mainHeader',
-			url: '/table/:video_id',
+			url: '/items/edit/:video_id',
 			template: '<edit-item></edit-item>'
 		})
 });

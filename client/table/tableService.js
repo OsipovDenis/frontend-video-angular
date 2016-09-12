@@ -4,15 +4,23 @@ const tableService = function($http, $q) {
 
   var service = {
     getAllVideos: function() {
-      return $http.get('https://angular-video-service.firebaseio.com/videos.json').then(function(data) {
-        return data;
+      return $http.get('https://angular-video-service.firebaseio.com/videos.json').then(function(response) {
+        return response;
+      })
+      .then(function(response){
+        var data = response.data;
+        var reformattedArray = Object.keys(data).map(function(key) {
+          var tempObj = data[key];
+              tempObj.id = key;
+          return tempObj;
+        });
+        return $q.when(reformattedArray)
       });
     },
     
     getVideo: function(id) {
-      return service.getAllVideos()
-              .then( (resp) => {
-                return resp;
+      return  $http.get('https://angular-video-service.firebaseio.com/videos.json').then(function(response) {
+                return response;
               })
               .then( (resp) => {
                 return resp.data[id];

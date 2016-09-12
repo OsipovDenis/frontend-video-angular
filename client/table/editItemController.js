@@ -9,6 +9,7 @@ const editItemController = function($state, $stateParams, tableService) {
 
 	this.getUser = function(){
 		this.id = $stateParams.video_id;
+		console.log(this.id);
 		
 		tableService.getVideo(this.id).then((video)=>{
 			this.video = video;

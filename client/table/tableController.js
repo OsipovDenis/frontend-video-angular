@@ -3,18 +3,16 @@
 const tableController = function($state, $window, tableService) {
 	var self = this;
 
-	var promiseObj = tableService.getAllVideos();
-
-	promiseObj.then((resp) => {
-		this.items = resp.data;
-	});
+	this.sortType     = 'id'; // default sort type
+  this.sortReverse  = false; // default sort order
+  this.searchTitle   = ''; // default search filter
 
 	this.updateTable = function(){
 		var promiseObj = tableService.getAllVideos();
 
-		promiseObj.then((resp) => {
-			this.items = resp.data;
-			// console.log(this.items);
+		promiseObj.then((data) => {
+			this.items = data;
+			console.log(this.items);
 		});		
 	} 
 	
@@ -23,15 +21,15 @@ const tableController = function($state, $window, tableService) {
 		$state.go('addItem');
 	}
 
-	this.edit = function(item, id) {
-		$state.go('editItem',{ video_id: id });
+	this.edit = function(item) {
+		$state.go('editItem',{ video_id: item.id });
 	}
 
-	this.delete = function(item, id) {
+	this.delete = function(item) {
 
 		if( $window.confirm('Удалить?') ){
 
-			tableService.deleteVideo(id)
+			tableService.deleteVideo(item.id)
 				.then( (data) => {
 					if(data.status === 200) {
 						console.log('Удалено');
@@ -39,13 +37,15 @@ const tableController = function($state, $window, tableService) {
 					} else {
 						alert('ooops! Something wrong! Try again or later!');
 					}
-				})
-				.catch((error) => {
-					console.log(error);
 				});
-			
 		}
 	}
+
+	this.sortBy = function(rule) {
+		angular.sort
+	}
+
+	this.updateTable();
 };
 
 export default tableController;

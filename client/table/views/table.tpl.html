@@ -7,7 +7,7 @@
 			
     <div class="row clearfix">
 	    <div class="input__wrap">
-	      <input type="text">
+	      <input type="text" ng-model="tableCtrl.searchTitle">
 	    </div>
      		<div class="buttons__wrap">
 		      <button>Archive Selected</button>
@@ -19,22 +19,30 @@
 			<table>
 				<thead>
 					<tr>
-						<td>Check</td>
-						<td>ID</td>
+						<td>
+							Check
+						</td>
+						<td>
+							<a href="#!" ng-click="tableCtrl.sortType='id'; tableCtrl.sortReverse = !tableCtrl.sortReverse">ID</a>
+						</td>
 						<td>Title</td>
-						<td>Author</td>
-						<td>Duration</td>
+						<td>
+							<a href="#!" ng-click="tableCtrl.sortType='author'; tableCtrl.sortReverse = !tableCtrl.sortReverse">Author</a>
+						</td>
+						<td>
+							<a href="#!" ng-click="tableCtrl.sortType='duration'; tableCtrl.sortReverse = !tableCtrl.sortReverse">Duration</a>
+						</td>
 						<td>Actions</td>
 					</tr>
 				</thead>
-				<tbody>
-					<tr ng-repeat="(key, item) in tableCtrl.items">
+				<tbody make-sotrable>
+					<tr ng-repeat="item in tableCtrl.items | orderBy : tableCtrl.sortType : tableCtrl.sortReverse | filter : tableCtrl.searchTitle">
 						<td><input type="checkbox" ng-model="item.archived"/></td>
-						<td>{{key}}</td>
+						<td>{{item.id}}</td>
 						<td><a href='{{item.link}}' target='_blank'>{{item.title}}</a></td>
 						<td>{{item.author}}</td>
 						<td>{{item.duration}}</td>
-						<td><button ng-click="tableCtrl.edit(item, key)">Edit</button>
+						<td><button ng-click="tableCtrl.edit(item)">Edit</button>
 								<button ng-click="tableCtrl.delete(item, key)">Delete</button></td>
 					</tr>
 				</tbody>

@@ -2,8 +2,15 @@
 
 const addItemController = function($state, tableService) {
 	
-	console.log('Hello from addItemController!');
+	// console.log('Hello from addItemController!');
 	this.item = null;
+	this.users = [
+		{ 'name' :'Антон' },
+		{ 'name' : 'Денис' },
+		{ 'name' : 'Сергей' },
+		{ 'name' : 'Павел' },
+		{ 'name' : 'Федор' }
+	];
 
 	this.addItem = function(){
 		this.item.archived = false;

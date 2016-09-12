@@ -16,7 +16,15 @@
 					</label>
 					<label for="author">
 						Course Author
-						<input type="text" placeholder="author" ng-model='editItemCtrl.video.author'>
+						<select ng-model='editItemCtrl.video.author'>
+							<!-- <option ng-repeat="user in editItemCtrl.users" value='{{user.name}}'>{{user.name}}</option> -->
+							<option value="John">John</option>
+							<option value="Anton">Anton</option>
+							<option value="Wazgen">Wazgen</option>
+							<option value="Boris">Boris</option>
+							<option value="Jack">Jack</option>
+							<option value="George">George</option>
+						</select>
 					</label>
 					<label for="duration">
 						Course Duration

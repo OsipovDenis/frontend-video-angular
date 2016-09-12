@@ -30,6 +30,9 @@ table.config(($stateProvider) => {
 // Хэдер
 import headerDirective from './headerDirective';
 
+// Юзеринфо
+import userInfo from './userInfoDirective';
+
 // Таблица
 import tableDirective from './tableDirective';
 import tableService from './tableService';
@@ -43,6 +46,9 @@ import editItemDirective from './editItemDirective';
 
 // Хэдер
 table.directive('mainHeader', headerDirective);
+
+// Юзеринфо
+table.directive('userInfo', userInfo);
 
 // Таблица
 table.directive('tableContent', tableDirective);

@@ -1,10 +1,9 @@
-<div class="user__container clearfix">
-		<div class="avatar">
-			<img src="#" alt="аватар">
-		</div>
-		<div class="user-info">
-			<h5>{{userCtrl.user.username}}</h5>
-			<a href="#!" ng-click="userCtrl.logout()">Logout</a>
-		</div>	
+<div class="user-wrap clearfix">
+	<div class="avatar">
+		<img src="http://forum.death-arena.ru/uploads/profile/photo-thumb-1.jpg?_r=1422810144" alt="аватар">
 	</div>
+	<div class="user-info">
+		<span class="user-name">{{userCtrl.user.username}}</span>
+		<a href="#!" class="user-logout" ng-click="userCtrl.logout()">Logout</a>
+	</div>	
 </div>

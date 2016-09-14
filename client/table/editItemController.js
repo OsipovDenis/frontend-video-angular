@@ -4,7 +4,7 @@ const editItemController = function($state, $stateParams, tableService) {
 	var self = this;
 
 	this.id = null;
-	this.video = null;
+	this.item = null;
 	// console.log('Hello from editItemController!');
 	// console.log($stateParams.video_id);
 	this.users = [
@@ -16,21 +16,21 @@ const editItemController = function($state, $stateParams, tableService) {
 	];
 
 	this.getItem = function(){
-		this.id = $stateParams.video_id;
+		self.id = $stateParams.video_id;
 		// console.log(this.id);
 		
-		tableService.getVideo(this.id).then((video)=>{
-			self.video = video;
+		tableService.getVideo(self.id).then((item)=>{
+			self.item = item;
 		});
 
 	}
 
 	this.updateItem = function(){
-		tableService.updateVideo(this.id, this.video)
+		tableService.updateVideo(self.id, self.item)
 		.then((resp)=>{
 			if(resp.status === 200) {
-				this.id = null;
-				this.video = null;
+				self.id = null;
+				self.item = null;
 				$state.go('table');
 			} else {
 				alert('ooops! Something wrong! Try update VIDEO again or later!');
@@ -39,8 +39,8 @@ const editItemController = function($state, $stateParams, tableService) {
 	}
 
 	this.cancel = function() {
-		this.id = null;
-		this.video = null;
+		self.id = null;
+		self.item = null;
 		$state.go('table');
 	}
 

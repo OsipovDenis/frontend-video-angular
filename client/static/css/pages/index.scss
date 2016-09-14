@@ -1,1 +1,219 @@
 //main styles of index.html
+
+.container {
+	max-width: 1150px;
+	margin: 0 auto;
+}
+
+.row {
+	width: 100%;
+}
+
+// Хэдер логотип 'frontend video'
+.header {
+	height: 100px;
+	background: #3f51b5;
+	.logo{
+		text-transform: uppercase;
+		color: white;
+	}
+}
+		
+
+// хэдер
+.logo {
+	float: left;
+	margin-top: 37px;
+	h3 {
+		margin: 0;
+		text-transform: uppercase;
+		color: white;
+    font-weight: 400;
+    font-size: 18px;
+    position: relative;
+    // Треугольник css
+    #triangle-right {
+	    display: inline-block;
+	    position: relative;
+	    top: 2px;
+	    margin-left: 4px;
+  		margin-right: 2px;
+	    border-top: 8px solid transparent;
+	    border-left: 14px solid white;
+	    border-bottom: 8px solid transparent;
+		}
+	}
+}
+// Хэдер конец
+
+// Страница логина 
+.login-page {
+	width: 400px;
+	height: 570px;
+	margin: 0 auto;
+	.form-signin {
+    margin-top: 50px;
+		.form-header{
+	    color: #50546d;
+	    font-size: 18px;		
+		}
+		label {
+	    color: #707386;
+      margin-bottom: 5px;
+		}
+		.form-group {
+		    margin-top: 40px;
+		}
+	}
+}
+
+//Блокированная кнопки
+.btn {
+	width: 130px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+	color: #cecece;
+	font-weight: 500;
+}
+
+// Разблокированная кнопка
+.btn-confirm {
+  background-color: #f6511e;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  pointer-events: auto;
+}
+// input'ы log & pas
+.form-input {
+		width: 100%;
+		border: 1px solid lightgray;
+		border-radius: 5px;
+    padding: 10px 0 10px 10px;; 
+}
+
+// Блок информации о пользователе
+.user-wrap {
+  float: right;
+  width: 100px;
+}
+
+.avatar {
+  overflow: hidden;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-top: 30px;
+  img {
+    position: relative;
+    top: -69%;
+    left: -76%;
+  }
+}
+
+.user-info {
+  float: right;
+  margin-top: 25px;
+  .user-name {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #b5c0fa;
+    font-weight: 600;
+    font-size: 14px;
+	}
+	.user-logout {
+    display: block;
+    color: #b5c0fa;
+    font-size: 12px;
+	}
+}
+
+.main-section {
+	margin-top: 50px;
+	h1 {
+		color: #50546d;
+	}
+	.input-wrap {
+		float: left;
+		.input-search {
+	    width: 370px;
+	    height: 40px;
+	    border: 1px solid #d4d2d2;
+	    border-radius: 5px;
+	    padding-left: 10px;
+		}
+	}
+	.buttons-wrap {
+		float: right;
+	}
+}
+
+// Для таблицы
+table {
+  margin-top: 30px;
+  width: 100%;
+  border-collapse: collapse;
+  .table-head {
+    font-size: 15px;
+    font-weight: 500;
+    color: #50546d;
+    tr {
+    	height: 50px;
+    	border-bottom: 2px solid #dcdcdc;
+		}
+		a {
+	    color: #50546d;
+		}
+	}
+	.table-body {
+    tr {
+    	height: 50px;
+    	border-bottom: 1px solid #dcdcdc;
+		}
+		.action-button {
+	    padding: 0;
+	    border: none;
+  	  background: white;
+			color: #1291ea;
+			cursor: pointer;
+		}
+  }
+}
+
+.title-link{
+	color: #1291ea;
+  cursor: pointer;
+}
+
+.archived {
+	color: #b5b6bf;
+	pointer-events: none;
+	a.title-link {
+		color: #b5b6bf !important;
+	}
+}
+
+// для формы добавления/редактирования
+label {
+	display: block;
+}
+
+input {
+	display: block;
+}
+
+option {
+	display: block;
+}
+
+
+
+
+.unarchived {
+	pointer-events: auto;
+}
+

@@ -32,7 +32,7 @@ var webpackConfig = {
 		loaders: [
 			{ test: /\.scss|css$/, loader: ExtractTextPlugin.extract('style',['css','sass']) },
 			{ test: /\.(png|jp*g|gif|svg)([\?]?.*)$/, loader: "file?name=img/[name].[ext]?[hash]"  },
-			{ test: /\.(woff|ttf|eot)([\?]?.*)$/, loader: "file?name=fonts/[name].[ext]?[hash]" },
+			{ test: /\.(woff|ttf|eot|otf|svg)([\?]?.*)$/, loader: "file?name=fonts/[name].[ext]?[hash]" },
 			{
 				test: /\.js?$/,
 				include: CONTEXT,

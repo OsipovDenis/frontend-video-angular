@@ -5,19 +5,36 @@
 				<div class="header__add__item">
 					<h3>Add New Course</h3>
 				</div>
-				<div class="add__content__wrap">
+				<form class="add__content__wrap" name="formAddItem">
 					<label for="title">
 						Course Title *
-						<input type="text" placeholder="name" ng-model='addItemCtrl.item.title'>
+						<input 
+									type="text" 
+									placeholder="title"
+									name="title" 
+									ng-model='addItemCtrl.item.title'
+									ng-model-options="{ updateOn: 'blur' }" 
+									required>
 					</label>
 					<label for="link">
 						Course Link *
-						<input type="text" placeholder="link" ng-model='addItemCtrl.item.link'>
+						<input 
+									type="text" 
+									placeholder="link"
+									name="link"
+									ng-pattern = "/^((http|https)?\:\/\/)[A-Za-z\-\.]*/"
+									ng-model="addItemCtrl.item.link"
+									ng-model-options="{ updateOn: 'blur' }"
+									required>
 					</label>
 					<label for="author">
 						Course Author
-						<select ng-model='addItemCtrl.item.author'>
+						<select 
+										ng-model='addItemCtrl.item.author'
+										ng-model-options="{ updateOn: 'blur' }" 
+										name="user">
 							<!-- <option ng-repeat="user in addItemCtrl.users" value='{{user.name}}'>{{user.name}}</option> -->
+							<!-- ng-options -->
 							<option value="John">John</option>
 							<option value="Anton">Anton</option>
 							<option value="Wazgen">Wazgen</option>
@@ -28,13 +45,21 @@
 					</label>
 					<label for="duration">
 						Course Duration
-						<input type="text" placeholder="duration" ng-model='addItemCtrl.item.duration'>
+						<input 
+									type="text" 
+									placeholder="HH:MM:SS"
+									name="duration"
+									ng-pattern="/^([0-1]\d|2[0-3])(:[0-5]\d){2}$/" 
+									ng-model='addItemCtrl.item.duration'
+									ng-model-options="{ updateOn: 'blur' }">
 					</label>
 					<div class="buttons__item">
-						<button ng-click="addItemCtrl.addItem()">Add</button>
+						<button 
+										ng-click="addItemCtrl.addItem()"
+										ng-disabled="formAddItem.$invalid">Add</button>
 						<button ng-click="addItemCtrl.cancel()">Cancel</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>

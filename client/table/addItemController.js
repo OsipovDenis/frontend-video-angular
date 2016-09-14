@@ -1,7 +1,7 @@
 'use strict';
 
 const addItemController = function($state, tableService) {
-	
+	var self = this;
 	// console.log('Hello from addItemController!');
 	this.item = null;
 	this.users = [
@@ -13,12 +13,12 @@ const addItemController = function($state, tableService) {
 	];
 
 	this.addItem = function(){
-		this.item.archived = false;
-		
+		self.item.archived = false;
+		console.log(self.item);
 		tableService.postVideo(this.item)
 			.then((data) => {
 				if ( data.status === 200 ) {
-					this.item = null;
+					self.item = null;
 					$state.go('table');
 				} else {
 					alert('ooops! Something wrong! Try again or later!');

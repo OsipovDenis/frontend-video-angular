@@ -1,51 +1,83 @@
-<section>
+<section class="main-section">
 	<div class="container">
 	
 		<div class="row">
-	    <h3>Courses</h3>
+	    <h1>Courses</h1>
 		</div>
 			
     <div class="row clearfix">
-	    <div class="input__wrap">
-	      <input type="text" ng-model="tableCtrl.searchTitle">
+	    <div class="input-wrap">
+	      <input 
+				      type="search" 
+				      class="input-search" 
+				      placeholder="Search by title" 
+				      ng-model="tableCtrl.searchTitle">
 	    </div>
-     		<div class="buttons__wrap">
-		      <button ng-click="tableCtrl.archiveAllSelected()">Archive Selected</button>
-		      <button ng-click="tableCtrl.addNew()">Add New</button>
+     		<div class="buttons-wrap">
+		      <button 
+						      ng-click="tableCtrl.archiveAllSelected()" 
+						      class="btn" 
+						      ng-class = "{'btn-confirm' : !tableCtrl.disablBtnArchiveSelected}">Archive Selected</button>
+		      <button 
+						      class="btn btn-confirm"
+						      ng-click="tableCtrl.addNew()">Add New</button>
        	</div>
     </div>
 
 		<div class="row">
 			<table>
-				<thead>
+				<thead class="table-head">
 					<tr>
 						<td>
-							<input type="checkbox" ng-model="tableCtrl.archiveAllVideo" ng-change="tableCtrl.selectAllVideoForArchive(value)" ng-class="{archived: tableCtrl.disableSelectAllVideos}">
-						</td>
-						<td>
-							<a href="#!" ng-click="tableCtrl.sortType='id'; tableCtrl.sortReverse = !tableCtrl.sortReverse">ID</a>
+							<input 
+										type="checkbox" 
+										ng-model="tableCtrl.archiveAllVideo" 
+										ng-change="tableCtrl.selectAllVideoForArchive(value)" 
+										ng-class="{archived: tableCtrl.disableSelectAllVideos}" 
+										ng-disabled="tableCtrl.disableSelectAllVideos">
 						</td>
 						<td>Title</td>
 						<td>
-							<a href="#!" ng-click="tableCtrl.sortType='author'; tableCtrl.sortReverse = !tableCtrl.sortReverse">Author</a>
+							<a 
+								href="#!" 
+								ng-click="tableCtrl.sortType='author'; tableCtrl.sortReverse = !tableCtrl.sortReverse">Author</a>
 						</td>
 						<td>
-							<a href="#!" ng-click="tableCtrl.sortType='duration'; tableCtrl.sortReverse = !tableCtrl.sortReverse">Duration</a>
+							<a 
+								href="#!" 
+								ng-click="tableCtrl.sortType='duration'; tableCtrl.sortReverse = !tableCtrl.sortReverse">Duration</a>
 						</td>
 						<td>Actions</td>
 					</tr>
 				</thead>
-				<tbody>
-					<tr ng-repeat="item in tableCtrl.items | orderBy : tableCtrl.sortType : tableCtrl.sortReverse | filter : {title : tableCtrl.searchTitle }" ng-class="{ archived: item.archived && item.selectedToArchive }">
-						<td><input type="checkbox" ng-model="item.selectedToArchive"/></td>
-						<td>{{item.id}}</td>
-						<td><a href='{{item.link}}' target='_blank'>{{item.title}}</a></td>
+				<tbody class="table-body">
+					<tr 
+							ng-repeat="item in tableCtrl.items | orderBy : tableCtrl.sortType : tableCtrl.sortReverse | filter : {title : tableCtrl.searchTitle }" 
+							ng-class="{ archived: item.archived && item.selectedToArchive }">
+						<td><input 
+								type="checkbox" 
+								ng-model="item.selectedToArchive" 
+								ng-disabled="item.archived"
+								ng-click="tableCtrl.helperForBtnArchiveSelected()"/></td>
+						<td><a href='{{item.link}}' class="title-link" target='_blank'>{{item.title}}</a></td>
 						<td>{{item.author}}</td>
 						<td>{{item.duration}}</td>
 						<td>
-								<button ng-if="!item.archived" ng-click="tableCtrl.edit(item)">Edit</button>
-								<button ng-if="!item.archived" ng-click="tableCtrl.delete(item, key)">Delete</button>
-								<button ng-if="item.archived" ng-class="{ unarchived: item.archived }" ng-click="tableCtrl.unarchiveVideo(item)">Unarchive</button>	
+							<button 
+								class = "action-button"
+								ng-if = "!item.archived" 
+								ng-click = "tableCtrl.edit(item)">Edit</button>
+							<a 
+								class = "action-button"
+								href = "#!" 
+								ng-if = "!item.archived" 
+								ng-click = "tableCtrl.delete(item, key)">Delete</a>
+							<a 
+								class = "action-button"
+								href = "#!" 
+								ng-if = "item.archived" 
+								ng-class = "{ unarchived: item.archived }" 
+								ng-click = "tableCtrl.unarchiveVideo(item)" >Unarchive</a>
 						</td>
 					</tr>
 				</tbody>

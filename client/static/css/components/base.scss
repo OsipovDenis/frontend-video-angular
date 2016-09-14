@@ -1,6 +1,6 @@
 //basic tags and general rules
 body {
-  font-family: 'Segoe', Arial, sans-serif;
+  font-family: 'OpenSans', Arial, sans-serif;
   font-size: 14px;
   line-height: 24/14;
 }
@@ -9,3 +9,24 @@ p {
   margin-top: 0;
   margin-bottom: 25px;
 }
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+// clearfix start
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+// clearfix end
+

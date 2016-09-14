@@ -43,29 +43,3 @@
 	}
 }
 
-@mixin bg-img($img, $pos: center center, $att: scroll) {
-	background-image: url($img-folder + $img);
-	background-position: $pos;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: $att;
-}
-
-@mixin overlay($opascity: 0.5) {
-	position: relative;
-	z-index: 1;
-	&:before {
-		position: absolute;
-		content: '';
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: transparentize($overlay, $opascity);
-		z-index: -1;
-	}
-}
-
-@mixin transition($prop: all, $time: 0.3s, $ease: ease-in-out) {
-  transition: $prop $time $ease;
-}

@@ -7,10 +7,10 @@ const LoginService = function(store) {
 	this.checkCredits = (credits) => {
 		if(credits && (credits.name && credits.password) && (credits.name == 'admin' && credits.password == 'password')) {
 			authStatus = true;
+			store.set('user',{ username:credits.name });
 		} else {
 			authStatus = false;
 		}
-		store.set('user',{ username:credits.name });
 		
 		return authStatus;
 	}
@@ -24,7 +24,9 @@ const LoginService = function(store) {
 	}
 
 	this.logout = () => {
+		// console.log(store.get('user'));
 		store.remove('user');
+		// console.log(store.get('user'));
 	}
 
 }

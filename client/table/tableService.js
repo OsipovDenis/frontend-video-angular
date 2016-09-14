@@ -9,6 +9,7 @@ const tableService = function($http, $q) {
               })
               .then( (response) => {
                 var data = response.data;
+                // transform response
                 var reformattedArray = Object.keys(data).map(function(key) {
                   var tempObj = data[key];
                       tempObj.id = key;

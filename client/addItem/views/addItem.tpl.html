@@ -18,12 +18,12 @@
 									ng-model = "addItemCtrl.item.title"
 									ng-model-options = "{ updateOn: 'blur' }" 
 									required>
-						<span ng-show = "formAddItem.title.$touched && formAddItem.title.$invalid" class="error-text">
+						<span 
+									ng-show = "formAddItem.title.$touched && formAddItem.title.$invalid" 
+									class="error-text">
 							Course Title is Required.
 						</span>
-						
 					</div>
-
 					<div class = "form-group">
 						<label class = "label-text" for = "link">
 							Course Link *
@@ -37,14 +37,17 @@
 									ng-model = "addItemCtrl.item.link"
 									ng-model-options =  " { updateOn: 'blur' }"
 									required>
-						<span ng-show = "formAddItem.link.$touched && formAddItem.link.$invalid" class="error-text">
+						<span 
+									ng-show = "formAddItem.link.$touched && formAddItem.link.$invalid" 
+									class="error-text">
 							Course Link is Required.
 						</span>
-						<span ng-show="formAddItem.link.$error.pattern" class="error-text">
+						<span 
+									ng-show="formAddItem.link.$error.pattern" 
+									class="error-text">
 							Incorrect Link.
 						</span>
 					</div>
-
 					<div class = "form-group">
 						<label class = "label-text" for = "author">
 							Course Author
@@ -55,10 +58,11 @@
 										ng-model = "addItemCtrl.item.author"
 										ng-model-options = "{ updateOn: 'blur' }" 
 										name = "user">
-							<option ng-repeat="user in addItemCtrl.users" value='{{user.name}}'>{{user.name}}</option>
+							<option 
+											ng-repeat="user in addItemCtrl.users" 
+											value='{{user.name}}'>{{::user.name}}</option>
 						</select>
 					</div>
-
 					<div class = "form-group">
 						<label class = "label-text" for = "duration">
 							Course Duration
@@ -71,18 +75,21 @@
 									ng-pattern = "/^([0-1]\d|2[0-3])(:[0-5]\d){2}$/" 
 									ng-model = "addItemCtrl.item.duration"
 									ng-model-options = "{ updateOn: 'blur' }">
-						<span ng-show="formAddItem.duration.$error.pattern" class="error-text">
+						<span 
+									ng-show = "formAddItem.duration.$error.pattern" 
+									class = "error-text">
 							Incorrect duration.
 						</span>
 					</div>	
-						
 					<div class = "form-group-buttons">
 						<button 
 										class = "btn"
 										ng-class = "{'btn-confirm' : !formAddItem.$invalid}"
 										ng-click = "addItemCtrl.addItem()"
 										ng-disabled = "formAddItem.$invalid">Add</button>
-						<button class = "btn btn-confirm" ng-click = "addItemCtrl.cancel()">Cancel</button>
+						<button 
+										class = "btn btn-confirm" 
+										ng-click = "addItemCtrl.cancel()">Cancel</button>
 					</div>
 				</form>
 			</div>

@@ -7,7 +7,7 @@ const LoginController = function(LoginService,$state) {
 		password: null
 	}
 	
-	this.login = () => {
+	this.login = function() {
 		if(this.credits.name && this.credits.password) {
 			if(LoginService.checkCredits(this.credits))
 				$state.go('table');

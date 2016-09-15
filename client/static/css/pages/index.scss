@@ -9,43 +9,39 @@
 	width: 100%;
 }
 
-// Хэдер логотип 'frontend video'
+// header 'frontend video'
 .header {
 	height: 100px;
 	background: #3f51b5;
-	.logo{
+	.logo {
+		float: left;
+		margin-top: 37px;
 		text-transform: uppercase;
 		color: white;
-	}
-}
-
-// хэдер
-.logo {
-	float: left;
-	margin-top: 37px;
-	h3 {
-		margin: 0;
-		text-transform: uppercase;
-		color: white;
-    font-weight: 400;
-    font-size: 18px;
-    position: relative;
-    // Треугольник css
-    #triangle-right {
-	    display: inline-block;
+		h3 {
+			margin: 0;
+			text-transform: uppercase;
+			color: white;
+	    font-weight: 400;
+	    font-size: 18px;
 	    position: relative;
-	    top: 2px;
-	    margin-left: 4px;
-  		margin-right: 2px;
-	    border-top: 8px solid transparent;
-	    border-left: 14px solid white;
-	    border-bottom: 8px solid transparent;
+	    // Треугольник css
+	    #triangle-right {
+		    display: inline-block;
+		    position: relative;
+		    top: 2px;
+		    margin-left: 4px;
+	  		margin-right: 2px;
+		    border-top: 8px solid transparent;
+		    border-left: 14px solid white;
+		    border-bottom: 8px solid transparent;
+			}
 		}
 	}
 }
-// Хэдер конец
+// header end
 
-// Страница логина 
+// Login page 
 .login-page {
   max-width: 400px;
 	height: 570px;
@@ -65,7 +61,7 @@
   font-weight: 500;
 }
 
-//Блокированная кнопки
+//Disable button
 .btn {
 	width: 130px;
   height: 40px;
@@ -76,7 +72,7 @@
 	font-weight: 500;
 }
 
-// Разблокированная кнопка
+// Enable button
 .btn-confirm {
   background-color: #f6511e;
   color: white;
@@ -90,7 +86,7 @@
    height: 100px;
 }
 
-// input'ы login & password && добавления и редактирования
+// input'ы login & password && addForm & editForm
 .form-input {
 	width: 100%;
 	border: 1px solid lightgray;
@@ -98,7 +94,7 @@
   height: 40px;
 }
 
-// Блок информации о пользователе
+// block user info start
 .user-wrap {
   float: right;
   width: 100px;
@@ -135,7 +131,9 @@
     font-size: 12px;
 	}
 }
+// block user info end
 
+// main - view (#/table)
 .main-section {
 	margin-top: 50px;
 	.input-wrap {
@@ -168,9 +166,7 @@ h1 {
 	margin: 0;
 }
 
-// Для таблицы
 table {
-  margin-top: 30px;
   width: 100%;
   border-collapse: collapse;
   .table-head {
@@ -200,7 +196,11 @@ table {
   }
 }
 
-// Управлние архивацией
+.table-header {
+  margin-bottom: 25px;
+}
+
+// for archive item
 .title-link{
 	color: #1291ea;
   cursor: pointer;
@@ -218,7 +218,7 @@ table {
 	pointer-events: auto;
 }
 
-// Форма добавления/редактирования
+// Form add/edit
 .add-item-wrap{
     margin: 0 auto;
     max-width: 400px;

@@ -1,6 +1,6 @@
 'use strict';
 
-const tableController = function($state, $window, tableService) {
+const tableController = function($state, $window, dataService) {
 	var self = this;
 
 	this.sortType     = 'id'; // default sort type
@@ -10,8 +10,8 @@ const tableController = function($state, $window, tableService) {
   this.disableSelectAllVideos = false; // helper for ng-if input 'select all videos'
   this.disablBtnArchiveSelected = false; // helper for button 'Archive Selected'
 
-	this.updateTable = function(){
-		var promiseObj = tableService.getAllVideos();
+	this.updateTable = function() {
+		var promiseObj = dataService.getAllVideos();
 
 		promiseObj.then((data) => {
 			self.items = data;
@@ -21,29 +21,27 @@ const tableController = function($state, $window, tableService) {
 	} 
 	
 	this.addNew = function() {
-		console.log('add new');
 		$state.go('addItem');
 	}
 
 	this.edit = function(item) {
-		// console.log(item);
-		$state.go('editItem',{ video_id: item.id });
+		$state.go('editItem', { video_id: item.id });
 	}
 
 	this.delete = function(item) {
 		if( $window.confirm('Удалить?') ){
-			tableService.deleteVideo(item.id)
-				.then( (data) => {
-					if(data.status === 200) {
+			dataService.deleteVideo(item.id)
+				.then((data) => {
+					if( data.status === 200 ) {
 						self.updateTable();
 					} else {
-						alert('ooops! Something wrong! Try again or later!');
+						$window.alert('ooops! Something wrong! Try again or later!');
 					}
 				});
 		}
 	}
 
-	// Функция для выбора всех незаархивированных видео
+	// Function for select all unarchive videos
 	this.selectAllVideoForArchive = function() {
 		this.items.map(function(item){
 			if( !item.archived ){
@@ -53,12 +51,12 @@ const tableController = function($state, $window, tableService) {
 		self.helperForBtnArchiveSelected();
 	}
 
-	// Функция для архивации всех выбранных видео
+	// Function for archive all selected videos
 	this.archiveAllSelected = function(){
 		var arrToPushItems = [];
 		self.items.map(function(item){
-			if(item.selectedToArchive){
-				if(!item.archived){
+			if( item.selectedToArchive ){
+				if( !item.archived ){
 					item.archived = true;
 					arrToPushItems.push(item);
 				}
@@ -66,49 +64,47 @@ const tableController = function($state, $window, tableService) {
 		});
 
 		if ( !!arrToPushItems.length ){
-			tableService.toUpdateSomeVideos(arrToPushItems)
+			dataService.toUpdateSomeVideos(arrToPushItems)
 			.then((response) => {
-
 				helperForSelectVideos();
 				self.helperForBtnArchiveSelected();
 			})
-			.catch( (error) => {
-				alert('ooops! Something wrong! Try again or later!' + error);
+			.catch((error) => {
+				$window.alert('ooops! Something wrong! Try again or later!' + error);
 			});
 		}
 	}
 	
-	// Функция для разархивации видео 
+	// Function for unarchive video
 	this.unarchiveVideo = function(item){
 		item.archived = false;
 		item.selectedToArchive = false;
 
-		tableService.updateVideo(item.id, item)
+		dataService.updateVideo(item.id, item)
 		.then((response) => {
-			 console.log('video unarchived!');
 			 helperForSelectVideos();
 			 self.helperForBtnArchiveSelected();
 		})
-		.catch( (error) => {
+		.catch((error) => {
 			item.archived = true;
 			item.selectedToArchive = true;
-			alert('ooops! Something wrong! Try again or later!' + error);
+			$window.alert('ooops! Something wrong! Try again or later!' + error);
 		});
 	}
 
-	// Хэлпер для отображения кнопки 'Archive Selected' 
+	// Helper for view button 'Archive Selected' 
 	this.helperForBtnArchiveSelected = function(){
-		// 1 счётчик для подсчета выбранных для архивации видео.
-		// 2 счётчик для подсчёта архивированных видео.
+		// counter for selected for archiving video
+		// secondCounter of archived video
 		var counter = 0,
 				secondCounter = 0,
 				itemslength = self.items.length;
 
 				self.items.forEach(function(item){
-					if(item.archived){
+					if( item.archived ){
 						secondCounter++;
 						counter++;
-					}else if(item.selectedToArchive) {
+					}else if( item.selectedToArchive ) {
 						counter++;
 					}
 				});
@@ -120,14 +116,14 @@ const tableController = function($state, $window, tableService) {
 				}
 	}
 
-	// Хэлпер для input'a, который выбирает все input'ы
+	// Helper for input, which select all videos
 	function helperForSelectVideos(){
-		// счётчик для подсчёта заархивированных видео.
+		// counter of archived video
 		var counter = 0,
 				itemslength = self.items.length;
 
 		self.items.forEach(function(item){
-			if(item.archived){
+			if( item.archived ){
 				counter++;
 			}
 		});

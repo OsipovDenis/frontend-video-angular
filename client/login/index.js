@@ -2,7 +2,7 @@
 
 const login = angular.module('login',[]);
 
-login.config(($stateProvider) => {
+login.config(function($stateProvider){
 
 	$stateProvider.state('login', {
 		url: '/login',

@@ -4,7 +4,8 @@ const LoginService = function(store) {
 
 	var authStatus = false;
 
-	this.checkCredits = (credits) => {
+	this.checkCredits = function(credits) {
+		
 		if(credits && (credits.name && credits.password) && (credits.name == 'admin' && credits.password == 'password')) {
 			authStatus = true;
 			store.set('user',{ username:credits.name });
@@ -15,7 +16,7 @@ const LoginService = function(store) {
 		return authStatus;
 	}
 
-	this.isAuthorized = () => {
+	this.isAuthorized = function(){
 		var user = store.get('user');
 		if(user)
 			return true;
@@ -23,10 +24,8 @@ const LoginService = function(store) {
 			return false;
 	}
 
-	this.logout = () => {
-		// console.log(store.get('user'));
+	this.logout = function(){
 		store.remove('user');
-		// console.log(store.get('user'));
 	}
 
 }

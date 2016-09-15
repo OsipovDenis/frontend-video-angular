@@ -5,17 +5,23 @@ import 'static/css/style.scss';
 
 /* JS */
 import './login';
+import './header';
 import './table';
+import './addItem';
+import './editItem';
 
 
 const video = angular.module('video',[
 	'ui.router',
 	'angular-storage',
 	'login',
-	'table'
+	'header',
+	'table',
+	'addItem',
+	'editItem'
 ]);
 
-video.config(($httpProvider,$stateProvider,$urlRouterProvider,storeProvider) => {
+video.config(function($httpProvider,$stateProvider,$urlRouterProvider,storeProvider) {
 
 	$urlRouterProvider.otherwise('/login');
 
@@ -25,7 +31,7 @@ video.config(($httpProvider,$stateProvider,$urlRouterProvider,storeProvider) => 
 
 video.run(function($rootScope,$state,LoginService) {
 	
-	$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, error) {
+	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, error) {
 		
 		if(toState.name != 'login' && !LoginService.isAuthorized()) {
 			event.preventDefault();

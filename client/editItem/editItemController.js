@@ -1,6 +1,6 @@
 'use strict';
 
-const editItemController = function($state, $stateParams, tableService) {
+const editItemController = function($state, $stateParams, dataService) {
 	var self = this;
 
 	this.id = null;
@@ -15,18 +15,16 @@ const editItemController = function($state, $stateParams, tableService) {
 	];
 
 	this.getItem = function(){
-		self.id = $stateParams.video_id;
-		// console.log(this.id);
-		
-		tableService.getVideo(self.id).then((item)=>{
+		self.id = $stateParams.video_id;		
+		dataService.getVideo(self.id).then((item) => {
 			self.item = item;
 		});
 
 	}
 
 	this.updateItem = function(){
-		tableService.updateVideo(self.id, self.item)
-		.then((resp)=>{
+		dataService.updateVideo(self.id, self.item)
+		.then((resp) => {
 			if(resp.status === 200) {
 				self.id = null;
 				self.item = null;

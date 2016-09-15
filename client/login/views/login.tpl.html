@@ -1,77 +1,75 @@
-<header class="header">
-	<div class="container">
-		<div class="row">
-			<div class="logo">
-				<a href="#/login"><h3>frontend <div id="triangle-right"></div> video</h3></a>
+ <header class = "header">
+	<div class = "container">
+		<div class = "row">
+			<div class = "logo">
+				<a href = "#/login"><h3>frontend <div id = "triangle-right"></div> video</h3></a>
 			</div>
 	</div>
 	
 </div>
 </header>
-<section class="clearfix">
-	<div class="container">
-		<div class="row">
-			<div class="login-page">
+<section class = "clearfix">
+	<div class = "container">
+		<div class = "row">
+			<div class = "login-page">
 		
-					<form class="form-signin" novalidate name="login">
-
-						<div class="form-header">
+					<form 
+							class = "form-signin"
+						  novalidate
+						  name = "login">
+						<div class = "form-header">
 							<h3>Authorization</h3>
 						</div>
-
-					    <div class="form-group">
-						    <label class = "label-text" for = "loginName">Username:</label>
-						    <input 
-									    type="text" 
-									    id="loginName" 
-									    class="form-input" 
-									    placeholder="admin" 
-									    autofocus="" 
-									    ng-model="loginCtrl.credits.name" 
-									    name="username" 
-									    ng-pattern="/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/"
-									    ng-model-options="{ updateOn: 'blur' }" 
-									    required>
-						    <span ng-show = "login.username.$touched && login.username.$invalid" class="error-text">
+				    <div class = "form-group">
+					    <label class = "label-text" for = "loginName">Username:</label>
+					    <input 
+								    type = "text" 
+								    id = "loginName" 
+								    class = "form-input" 
+								    placeholder = "admin" 
+								    autofocus = "" 
+								    ng-model = "loginCtrl.credits.name" 
+								    name = "username" 
+								    ng-pattern = "/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/"
+								    ng-model-options = "{ updateOn: 'blur' }" 
+								    required>
+					    <span ng-show = "login.username.$touched && login.username.$invalid" class = "error-text">
+								Login Is Required.
+							</span>
+							<span ng-show = "login.username.$error.pattern" class = "error-text">
+										Only Letters, Numbers and Underscores.
+							</span>
+						</div>
+						<div class = "form-group">
+					    <label class = "label-text" for = "loginPassword">Pasword:</label>
+					    <input 
+								    type = "password" 
+								    id = "loginPassword" 
+								    class = "form-input" 
+								    placeholder = "password" 
+								    ng-model = "loginCtrl.credits.password" 
+								    name = "password" 
+								    ng-pattern = "/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/" 
+								    ng-model-options = "{ updateOn: 'blur' }"
+								    required>
+						    <span ng-show = "login.password.$touched && login.password.$invalid" class =  " error-text">
 									Login Is Required.
 								</span>
-								<span ng-show="login.username.$error.pattern" class="error-text">
-											Only Letters, Numbers and Underscores.
-										</span>
+								<span ng-show = "login.password.$error.pattern" class="error-text">
+									Only Letters, Numbers and Underscores.
+								</span>
 						</div>
-
-						<div class="form-group">
-					    <label class = "label-text" for="loginPassword">Pasword:</label>
-					    <input 
-								    type="password" 
-								    id="loginPassword" 
-								    class="form-input" 
-								    placeholder="password" 
-								    ng-model="loginCtrl.credits.password" 
-								    name="password" 
-								    ng-pattern="/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/" 
-								    ng-model-options="{ updateOn: 'blur' }"
-								    required>
-								    <span ng-show = "login.password.$touched && login.password.$invalid" class="error-text">
-											Login Is Required.
-										</span>
-										<span ng-show="login.password.$error.pattern" class="error-text">
-											Only Letters, Numbers and Underscores.
-										</span>
-						</div>
-						<div class="form-group">
+						<div class = "form-group">
 					    <button 
-					    				class="btn"
-					    				autofocus="" 
+					    				class = "btn"
+					    				autofocus = "" 
 									    ng-click = "loginCtrl.login()"
 									    ng-class = "{'btn-confirm' : !login.$invalid}"
 									    ng-disabled = "login.$invalid"
 									    type = "submit">Login</button>
 						</div>
 				  </form>
-
 			</div>
 		</div>
 	</div>
-
 </section>

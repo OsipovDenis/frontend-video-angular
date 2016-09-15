@@ -1,12 +1,11 @@
 <section>
-	<div class="container">
-		<div class="row">
-			<div class= "add-item-wrap" >
+	<div class = "container">
+		<div class = "row">
+			<div class =  "add-item-wrap" >
 				<div class = "header-add-item">
 					<h1>Edit Course</h1>
 				</div>
 				<form class = "add-content-wrap" name="formEditItem">
-					
 					<div class = "form-group">
 						<label class = "label-text" for = "title">
 							Course Title *
@@ -19,11 +18,12 @@
 									ng-model = "editItemCtrl.item.title"
 									ng-model-options = "{ updateOn: 'blur' }" 
 									required>
-						<span ng-show = "formEditItem.title.$touched && formEditItem.title.$invalid" class="error-text">
+						<span 
+									ng-show = "formEditItem.title.$touched && formEditItem.title.$invalid" 
+									class = "error-text">
 							Course Title is Required.
 						</span>
 					</div>
-
 					<div class = "form-group">
 						<label class = "label-text" for = "link">
 							Course Link *
@@ -35,16 +35,19 @@
 									name = "link"
 									ng-pattern = "/^((http|https)?\:\/\/)[A-Za-z\-\.]*/"
 									ng-model = "editItemCtrl.item.link"
-									ng-model-options =  " { updateOn: 'blur' }"
+									ng-model-options = " { updateOn: 'blur' }"
 									required>
-						<span ng-show = "formEditItem.link.$touched && formEditItem.link.$invalid" class="error-text">
+						<span 
+									ng-show = "formEditItem.link.$touched && formEditItem.link.$invalid" 
+									class = "error-text">
 							Course Link is Required.
 						</span>
-						<span ng-show="formEditItem.link.$error.pattern" class="error-text">
+						<span 
+									ng-show = "formEditItem.link.$error.pattern" 
+									class = "error-text">
 							Incorrect Link.
 						</span>
 					</div>					
-
 					<div class = "form-group">
 						<label class = "label-text" for = "author">
 							Course Author
@@ -55,10 +58,11 @@
 										ng-model = "editItemCtrl.item.author"
 										ng-model-options = "{ updateOn: 'blur' }" 
 										name = "user">
-							<option ng-repeat="user in editItemCtrl.users" value='{{user.name}}'>{{user.name}}</option>
+							<option 
+											ng-repeat="user in editItemCtrl.users" 
+											value='{{user.name}}'>{{::user.name}}</option>
 						</select>
 					</div>
-
 					<div class = "form-group">
 						<label class = "label-text" for = "duration">
 							Course Duration
@@ -71,21 +75,20 @@
 									ng-pattern = "/^([0-1]\d|2[0-3])(:[0-5]\d){2}$/" 
 									ng-model = "editItemCtrl.item.duration"
 									ng-model-options = "{ updateOn: 'blur' }">
-						<span ng-show="formEditItem.duration.$error.pattern" class="error-text">
+						<span ng-show = "formEditItem.duration.$error.pattern" class = "error-text">
 							Incorrect duration.
 						</span>
 					</div>
-
 					<div class = "form-group-buttons">
 						<button 
 										class = "btn"
 										ng-class = "{'btn-confirm' : !formEditItem.$invalid}"
 										ng-click = "editItemCtrl.updateItem()"
 										ng-disabled = "formEditItem.$invalid">Add</button>
-
-						<button class = "btn btn-confirm" ng-click = "editItemCtrl.cancel()">Cancel</button>
+						<button 
+										class = "btn btn-confirm" 
+										ng-click = "editItemCtrl.cancel()">Cancel</button>
 					</div>
-
 				</form>
 			</div>
 		</div>

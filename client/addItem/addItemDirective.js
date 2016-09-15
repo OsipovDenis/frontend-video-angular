@@ -3,7 +3,7 @@
 import addItemTmpl from './views/addItem.tpl.html';
 import addItemController from './addItemController';
 
-const addItemForm = function() {
+const addItemDirective = function() {
 	return {
 		restrict: 'E',
 		template: addItemTmpl,
@@ -12,4 +12,4 @@ const addItemForm = function() {
 	}
 };
 
-export default addItemForm;
+export default addItemDirective;

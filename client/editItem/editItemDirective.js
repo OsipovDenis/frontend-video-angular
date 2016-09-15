@@ -3,7 +3,7 @@
 import editItemTmpl from './views/editItem.tpl.html';
 import editItemController from './editItemController';
 
-const editItemForm = function() {
+const editItemDirective = function() {
 	return {
 		restrict: 'E',
 		template: editItemTmpl,
@@ -12,4 +12,4 @@ const editItemForm = function() {
 	}
 };
 
-export default editItemForm;
+export default editItemDirective;

@@ -5,11 +5,11 @@ const addItemController = function($state, tableService) {
 	// console.log('Hello from addItemController!');
 	this.item = null;
 	this.users = [
-		{ 'name' :'Антон' },
-		{ 'name' : 'Денис' },
-		{ 'name' : 'Сергей' },
-		{ 'name' : 'Павел' },
-		{ 'name' : 'Федор' }
+		{ 'name' :'John' },
+		{ 'name' : 'Anton' },
+		{ 'name' : 'Wazgen' },
+		{ 'name' : 'Boris' },
+		{ 'name' : 'Jack' }
 	];
 
 	this.addItem = function(){

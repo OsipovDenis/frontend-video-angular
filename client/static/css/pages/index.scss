@@ -18,7 +18,6 @@
 		color: white;
 	}
 }
-		
 
 // хэдер
 .logo {
@@ -48,7 +47,7 @@
 
 // Страница логина 
 .login-page {
-	width: 400px;
+  max-width: 400px;
 	height: 570px;
 	margin: 0 auto;
 	.form-signin {
@@ -57,14 +56,13 @@
 	    color: #50546d;
 	    font-size: 18px;		
 		}
-		label {
-	    color: #707386;
-      margin-bottom: 5px;
-		}
-		.form-group {
-		    margin-top: 40px;
-		}
 	}
+}
+
+.label-text {
+  color: #707386;
+  margin-bottom: 5px;
+  font-weight: 500;
 }
 
 //Блокированная кнопки
@@ -86,12 +84,18 @@
   cursor: pointer;
   pointer-events: auto;
 }
-// input'ы log & pas
+
+// label + input
+.form-group {
+   height: 100px;
+}
+
+// input'ы login & password && добавления и редактирования
 .form-input {
-		width: 100%;
-		border: 1px solid lightgray;
-		border-radius: 5px;
-    padding: 10px 0 10px 10px;; 
+	width: 100%;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+  height: 40px;
 }
 
 // Блок информации о пользователе
@@ -134,9 +138,6 @@
 
 .main-section {
 	margin-top: 50px;
-	h1 {
-		color: #50546d;
-	}
 	.input-wrap {
 		float: left;
 		.input-search {
@@ -150,6 +151,11 @@
 	.buttons-wrap {
 		float: right;
 	}
+}
+
+h1 {
+	color: #50546d;
+	margin: 0;
 }
 
 // Для таблицы
@@ -184,6 +190,7 @@ table {
   }
 }
 
+// Управлние архивацией
 .title-link{
 	color: #1291ea;
   cursor: pointer;
@@ -197,23 +204,26 @@ table {
 	}
 }
 
-// для формы добавления/редактирования
-label {
-	display: block;
-}
-
-input {
-	display: block;
-}
-
-option {
-	display: block;
-}
-
-
-
-
 .unarchived {
 	pointer-events: auto;
 }
 
+// Форма добавления/редактирования
+.add-item-wrap{
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.header-add-item {
+	padding: 45px 0 30px;
+}
+
+.error-text {
+	display: inline-block;
+	color: red;
+}
+
+.form-group-buttons {
+  border-top: 1px solid lightgray;
+  padding-top: 50px;
+}

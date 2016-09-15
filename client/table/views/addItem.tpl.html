@@ -1,63 +1,88 @@
 <section>
-	<div class="container">
-		<div class="row">
-			<div class="add__item__wrap">
-				<div class="header__add__item">
-					<h3>Add New Course</h3>
+	<div class = "container">
+		<div class = "row">
+			<div class = "add-item-wrap">
+				<div class = "header-add-item">
+					<h1>Add New Course</h1>
 				</div>
-				<form class="add__content__wrap" name="formAddItem">
-					<label for="title">
-						Course Title *
+				<form class = "add-content-wrap" name = "formAddItem">
+					<div class = "form-group">
+						<label class = "label-text" for = "title">
+							Course Title *
+						</label>
 						<input 
-									type="text" 
-									placeholder="title"
-									name="title" 
-									ng-model='addItemCtrl.item.title'
-									ng-model-options="{ updateOn: 'blur' }" 
+									type = "text" 
+									placeholder = "title"
+									name = "title" 
+									class = "form-input"
+									ng-model = "addItemCtrl.item.title"
+									ng-model-options = "{ updateOn: 'blur' }" 
 									required>
-					</label>
-					<label for="link">
-						Course Link *
+						<span ng-show = "formAddItem.title.$touched && formAddItem.title.$invalid" class="error-text">
+							Course Title is Required.
+						</span>
+						
+					</div>
+
+					<div class = "form-group">
+						<label class = "label-text" for = "link">
+							Course Link *
+						</label>
 						<input 
-									type="text" 
-									placeholder="link"
-									name="link"
+									type = "text" 
+									placeholder = "link"
+									class = "form-input"
+									name = "link"
 									ng-pattern = "/^((http|https)?\:\/\/)[A-Za-z\-\.]*/"
-									ng-model="addItemCtrl.item.link"
-									ng-model-options="{ updateOn: 'blur' }"
+									ng-model = "addItemCtrl.item.link"
+									ng-model-options =  " { updateOn: 'blur' }"
 									required>
-					</label>
-					<label for="author">
-						Course Author
+						<span ng-show = "formAddItem.link.$touched && formAddItem.link.$invalid" class="error-text">
+							Course Link is Required.
+						</span>
+						<span ng-show="formAddItem.link.$error.pattern" class="error-text">
+							Incorrect Link.
+						</span>
+					</div>
+
+					<div class = "form-group">
+						<label class = "label-text" for = "author">
+							Course Author
+						</label>
 						<select 
-										ng-model='addItemCtrl.item.author'
-										ng-model-options="{ updateOn: 'blur' }" 
-										name="user">
-							<!-- <option ng-repeat="user in addItemCtrl.users" value='{{user.name}}'>{{user.name}}</option> -->
-							<!-- ng-options -->
-							<option value="John">John</option>
-							<option value="Anton">Anton</option>
-							<option value="Wazgen">Wazgen</option>
-							<option value="Boris">Boris</option>
-							<option value="Jack">Jack</option>
-							<option value="George">George</option>
+										class = "form-input"
+										placeholder = "author"
+										ng-model = "addItemCtrl.item.author"
+										ng-model-options = "{ updateOn: 'blur' }" 
+										name = "user">
+							<option ng-repeat="user in addItemCtrl.users" value='{{user.name}}'>{{user.name}}</option>
 						</select>
-					</label>
-					<label for="duration">
-						Course Duration
+					</div>
+
+					<div class = "form-group">
+						<label class = "label-text" for = "duration">
+							Course Duration
+						</label>
 						<input 
-									type="text" 
-									placeholder="HH:MM:SS"
-									name="duration"
-									ng-pattern="/^([0-1]\d|2[0-3])(:[0-5]\d){2}$/" 
-									ng-model='addItemCtrl.item.duration'
-									ng-model-options="{ updateOn: 'blur' }">
-					</label>
-					<div class="buttons__item">
+									type = "text" 
+									placeholder = "HH:MM:SS"
+									class = "form-input"
+									name = "duration"
+									ng-pattern = "/^([0-1]\d|2[0-3])(:[0-5]\d){2}$/" 
+									ng-model = "addItemCtrl.item.duration"
+									ng-model-options = "{ updateOn: 'blur' }">
+						<span ng-show="formAddItem.duration.$error.pattern" class="error-text">
+							Incorrect duration.
+						</span>
+					</div>	
+						
+					<div class = "form-group-buttons">
 						<button 
-										ng-click="addItemCtrl.addItem()"
-										ng-disabled="formAddItem.$invalid">Add</button>
-						<button ng-click="addItemCtrl.cancel()">Cancel</button>
+										class = "btn"
+										ng-class = "{'btn-confirm' : !formAddItem.$invalid}"
+										ng-click = "addItemCtrl.addItem()"
+										ng-disabled = "formAddItem.$invalid">Add</button>
+						<button class = "btn btn-confirm" ng-click = "addItemCtrl.cancel()">Cancel</button>
 					</div>
 				</form>
 			</div>

@@ -5,14 +5,13 @@ const editItemController = function($state, $stateParams, tableService) {
 
 	this.id = null;
 	this.item = null;
-	// console.log('Hello from editItemController!');
-	// console.log($stateParams.video_id);
+	
 	this.users = [
-		{ 'name' :'Антон' },
-		{ 'name' : 'Денис' },
-		{ 'name' : 'Сергей' },
-		{ 'name' : 'Павел' },
-		{ 'name' : 'Федор' }
+		{ 'name' :'John' },
+		{ 'name' : 'Anton' },
+		{ 'name' : 'Wazgen' },
+		{ 'name' : 'Boris' },
+		{ 'name' : 'Jack' }
 	];
 
 	this.getItem = function(){

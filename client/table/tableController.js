@@ -112,7 +112,7 @@ const tableController = function($state, $window, tableService) {
 						counter++;
 					}
 				});
-				console.log(counter, secondCounter);
+
 				if(counter > secondCounter){
 					self.disablBtnArchiveSelected= false;
 				} else {

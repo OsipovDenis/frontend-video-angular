@@ -19,8 +19,8 @@
 							<h3>Authorization</h3>
 						</div>
 
-					    <div class="form-group"> <!-- прикрутить рамку вокруг input -->
-						    <label for="loginName">Username:</label>
+					    <div class="form-group">
+						    <label class = "label-text" for = "loginName">Username:</label>
 						    <input 
 									    type="text" 
 									    id="loginName" 
@@ -32,10 +32,16 @@
 									    ng-pattern="/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/"
 									    ng-model-options="{ updateOn: 'blur' }" 
 									    required>
+						    <span ng-show = "login.username.$touched && login.username.$invalid" class="error-text">
+									Login Is Required.
+								</span>
+								<span ng-show="login.username.$error.pattern" class="error-text">
+											Only Letters, Numbers and Underscores.
+										</span>
 						</div>
 
 						<div class="form-group">
-					    <label for="loginPassword">Pasword:</label>
+					    <label class = "label-text" for="loginPassword">Pasword:</label>
 					    <input 
 								    type="password" 
 								    id="loginPassword" 
@@ -46,10 +52,17 @@
 								    ng-pattern="/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/" 
 								    ng-model-options="{ updateOn: 'blur' }"
 								    required>
+								    <span ng-show = "login.password.$touched && login.password.$invalid" class="error-text">
+											Login Is Required.
+										</span>
+										<span ng-show="login.password.$error.pattern" class="error-text">
+											Only Letters, Numbers and Underscores.
+										</span>
 						</div>
 						<div class="form-group">
 					    <button 
 					    				class="btn"
+					    				autofocus="" 
 									    ng-click = "loginCtrl.login()"
 									    ng-class = "{'btn-confirm' : !login.$invalid}"
 									    ng-disabled = "login.$invalid"

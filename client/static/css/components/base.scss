@@ -18,15 +18,14 @@ a:visited {
 	text-decoration: none;
 }
 
-// clearfix start
-.clearfix:before,
-.clearfix:after {
-	content: " ";
-	display: table;
+label {
+	display: block;
 }
 
-.clearfix:after {
-	clear: both;
+input {
+	display: block;
 }
-// clearfix end
 
+option {
+	display: block;
+}

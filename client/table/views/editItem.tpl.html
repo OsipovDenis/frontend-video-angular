@@ -1,63 +1,91 @@
 <section>
 	<div class="container">
 		<div class="row">
-			<div class="add__item__wrap">
-				<div class="header__add__item">
-					<h3>Add New Course</h3>
+			<div class= "add-item-wrap" >
+				<div class = "header-add-item">
+					<h1>Edit Course</h1>
 				</div>
-				<form class="add__content__wrap" name="formEditItem">
-					<label for="title">
-						Course Title *
-						<input
-									type="text" 
-									placeholder="title"
-									name="title" 
-									ng-model='editItemCtrl.item.title'
-									ng-model-options="{ updateOn: 'blur' }" 
-									required>
-					</label>
-					<label for="link">
-						Course Link *
+				<form class = "add-content-wrap" name="formEditItem">
+					
+					<div class = "form-group">
+						<label class = "label-text" for = "title">
+							Course Title *
+						</label>
 						<input 
-									type="text" 
-									placeholder="link"
-									name="link"
-									ng-pattern = "/^((http|https)?\:\/\/)[A-Za-z\-\.]*/"
-									ng-model="editItemCtrl.item.link"
-									ng-model-options="{ updateOn: 'blur' }" 
+									type = "text" 
+									placeholder = "title"
+									name = "title" 
+									class = "form-input"
+									ng-model = "editItemCtrl.item.title"
+									ng-model-options = "{ updateOn: 'blur' }" 
 									required>
-					</label>
-					<label for="author">
-						Course Author
-						<select 
-										ng-model="editItemCtrl.item.author"
-										ng-model-options="{ updateOn: 'blur' }" 
-										name="user">
-							<!-- <option ng-repeat="user in editItemCtrl.users" value='{{user.name}}'>{{user.name}}</option> -->
-							<option value="John">John</option>
-							<option value="Anton">Anton</option>
-							<option value="Wazgen">Wazgen</option>
-							<option value="Boris">Boris</option>
-							<option value="Jack">Jack</option>
-							<option value="George">George</option>
-						</select>
-					</label>
-					<label for="duration">
-						Course Duration
-						<input 
-									type="text" 
-									placeholder="HH:MM:SS"
-									name="duration"
-									ng-pattern="/^([0-1]\d|2[0-3])(:[0-5]\d){2}$/" 
-									ng-model='editItemCtrl.item.duration'
-									ng-model-options="{ updateOn: 'blur' }">
-					</label>
-					<div class="buttons__item">
-						<button 
-										ng-click="editItemCtrl.updateItem()"
-										ng-disabled="formEditItem.$invalid">Save</button>
-						<button ng-click="editItemCtrl.cancel()">Cancel</button>
+						<span ng-show = "formEditItem.title.$touched && formEditItem.title.$invalid" class="error-text">
+							Course Title is Required.
+						</span>
 					</div>
+
+					<div class = "form-group">
+						<label class = "label-text" for = "link">
+							Course Link *
+						</label>
+						<input 
+									type = "text" 
+									placeholder = "link"
+									class = "form-input"
+									name = "link"
+									ng-pattern = "/^((http|https)?\:\/\/)[A-Za-z\-\.]*/"
+									ng-model = "editItemCtrl.item.link"
+									ng-model-options =  " { updateOn: 'blur' }"
+									required>
+						<span ng-show = "formEditItem.link.$touched && formEditItem.link.$invalid" class="error-text">
+							Course Link is Required.
+						</span>
+						<span ng-show="formEditItem.link.$error.pattern" class="error-text">
+							Incorrect Link.
+						</span>
+					</div>					
+
+					<div class = "form-group">
+						<label class = "label-text" for = "author">
+							Course Author
+						</label>
+						<select 
+										class = "form-input"
+										placeholder = "author"
+										ng-model = "editItemCtrl.item.author"
+										ng-model-options = "{ updateOn: 'blur' }" 
+										name = "user">
+							<option ng-repeat="user in editItemCtrl.users" value='{{user.name}}'>{{user.name}}</option>
+						</select>
+					</div>
+
+					<div class = "form-group">
+						<label class = "label-text" for = "duration">
+							Course Duration
+						</label>
+						<input 
+									type = "text" 
+									placeholder = "HH:MM:SS"
+									class = "form-input"
+									name = "duration"
+									ng-pattern = "/^([0-1]\d|2[0-3])(:[0-5]\d){2}$/" 
+									ng-model = "editItemCtrl.item.duration"
+									ng-model-options = "{ updateOn: 'blur' }">
+						<span ng-show="formEditItem.duration.$error.pattern" class="error-text">
+							Incorrect duration.
+						</span>
+					</div>
+
+					<div class = "form-group-buttons">
+						<button 
+										class = "btn"
+										ng-class = "{'btn-confirm' : !formEditItem.$invalid}"
+										ng-click = "editItemCtrl.updateItem()"
+										ng-disabled = "formEditItem.$invalid">Add</button>
+
+						<button class = "btn btn-confirm" ng-click = "editItemCtrl.cancel()">Cancel</button>
+					</div>
+
 				</form>
 			</div>
 		</div>

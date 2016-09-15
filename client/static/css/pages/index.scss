@@ -146,11 +146,21 @@
 	    border: 1px solid #d4d2d2;
 	    border-radius: 5px;
 	    padding-left: 10px;
+	    padding-right: 30px;
 		}
 	}
 	.buttons-wrap {
 		float: right;
+    position: relative;
 	}
+}
+
+i.icon-search-pos {
+  position: relative;
+  top: -30px;
+  left: 343px;
+  font-size: 20px;
+  color: #d4d2d2;
 }
 
 h1 {

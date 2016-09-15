@@ -1,8 +1,10 @@
 //adding fonts
 
-// Segoe Bold
+// OpenSansBold
 @include font-face( OpenSans, "../fonts/OpenSansBold/OpenSansBold", 600, null, eot woff ttf);
-// SegoeRegular.
+// OpenSansRegular.
 @include font-face( OpenSans, "../fonts/OpenSansRegular/OpenSansRegular", 400, null, eot woff ttf);
-// SegoeSemiBold
+// OpenSansSemiBold
 @include font-face( OpenSans, "../fonts/OpenSansSemiBold/OpenSansSemiBold", 500, null, eot woff ttf);
+// icon
+@include font-face( icomoon, "../fonts/icons/icomoon", null, null, eot woff ttf svg);

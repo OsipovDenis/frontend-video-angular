@@ -12,18 +12,18 @@
 				      class="input-search" 
 				      placeholder="Search by title" 
 				      ng-model="tableCtrl.searchTitle">
-	    </div>
-     		<div class="buttons-wrap">
-		      <button 
-						      ng-click="tableCtrl.archiveAllSelected()" 
-						      class="btn" 
-						      ng-class = "{'btn-confirm' : !tableCtrl.disablBtnArchiveSelected}">Archive Selected</button>
-		      <button 
-						      class="btn btn-confirm"
-						      ng-click="tableCtrl.addNew()">Add New</button>
-       	</div>
+				      <i class="icon-search icon-search-pos"></i>
+    	</div>
+	    <div class="buttons-wrap">
+	      <button 
+					      ng-click="tableCtrl.archiveAllSelected()" 
+					      class="btn" 
+					      ng-class = "{'btn-confirm' : !tableCtrl.disablBtnArchiveSelected}">Archive Selected</button>
+	      <button 
+					      class="btn btn-confirm"
+					      ng-click="tableCtrl.addNew()">Add New</button>
+	   	</div>
     </div>
-
 		<div class="row">
 			<table>
 				<thead class="table-head">
@@ -41,11 +41,15 @@
 							<a 
 								href="#!" 
 								ng-click="tableCtrl.sortType='author'; tableCtrl.sortReverse = !tableCtrl.sortReverse">Author</a>
+								<i class="icon-chevron-up" ng-if="tableCtrl.sortType == 'author' && !tableCtrl.sortReverse"></i>
+    						<i class="icon-chevron-down" ng-if="tableCtrl.sortType == 'author' && tableCtrl.sortReverse"></i>
 						</td>
 						<td>
 							<a 
 								href="#!" 
 								ng-click="tableCtrl.sortType='duration'; tableCtrl.sortReverse = !tableCtrl.sortReverse">Duration</a>
+								<i class="icon-chevron-up" ng-if="tableCtrl.sortType == 'duration' && !tableCtrl.sortReverse"></i>
+    						<i class="icon-chevron-down" ng-if="tableCtrl.sortType == 'duration' && tableCtrl.sortReverse"></i>
 						</td>
 						<td>Actions</td>
 					</tr>

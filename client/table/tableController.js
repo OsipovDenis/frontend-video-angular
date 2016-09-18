@@ -43,7 +43,7 @@ const tableController = function($state, $window, dataService) {
 
 	// Function for select all unarchive videos
 	this.selectAllVideoForArchive = function() {
-		this.items.map(function(item){
+		this.items.forEach(function(item){
 			if( !item.archived ){
 				item.selectedToArchive = self.archiveAllVideo;
 			}
@@ -54,12 +54,10 @@ const tableController = function($state, $window, dataService) {
 	// Function for archive all selected videos
 	this.archiveAllSelected = function(){
 		var arrToPushItems = [];
-		self.items.map(function(item){
-			if( item.selectedToArchive ){
-				if( !item.archived ){
+		self.items.forEach(function(item){
+			if( item.selectedToArchive && !item.archived){
 					item.archived = true;
 					arrToPushItems.push(item);
-				}
 			}
 		});
 

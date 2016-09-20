@@ -31,13 +31,9 @@ const tableController = function($state, $window, dataService) {
 	this.delete = function(item) {
 		if( $window.confirm('Удалить?') ){
 			dataService.deleteVideo(item.id)
-				.then((data) => {
-					if( data.status === 200 ) {
-						self.updateTable();
-					} else {
-						$window.alert('ooops! Something wrong! Try again or later!');
-					}
-				});
+			.then(function() {
+					self.updateTable();
+			});
 		}
 	}
 
@@ -53,6 +49,7 @@ const tableController = function($state, $window, dataService) {
 
 	// Function for archive all selected videos
 	this.archiveAllSelected = function(){
+		// this array of objects which need to update
 		var arrToPushItems = [];
 		self.items.forEach(function(item){
 			if( item.selectedToArchive && !item.archived){
@@ -63,13 +60,10 @@ const tableController = function($state, $window, dataService) {
 
 		if ( !!arrToPushItems.length ){
 			dataService.toUpdateSomeVideos(arrToPushItems)
-			.then((response) => {
+			.then(function() {
 				helperForSelectVideos();
 				self.helperForBtnArchiveSelected();
 			})
-			.catch((error) => {
-				$window.alert('ooops! Something wrong! Try again or later!' + error);
-			});
 		}
 	}
 	
@@ -79,14 +73,13 @@ const tableController = function($state, $window, dataService) {
 		item.selectedToArchive = false;
 
 		dataService.updateVideo(item.id, item)
-		.then((response) => {
+		.then(function() {
 			 helperForSelectVideos();
 			 self.helperForBtnArchiveSelected();
 		})
-		.catch((error) => {
+		.catch(function() {
 			item.archived = true;
 			item.selectedToArchive = true;
-			$window.alert('ooops! Something wrong! Try again or later!' + error);
 		});
 	}
 

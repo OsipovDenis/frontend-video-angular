@@ -37,10 +37,10 @@ var webpackConfig = {
 				test: /\.js?$/,
 				include: CONTEXT,
 				exclude: /(node_modules|bower_components)/,
-      			loader: 'babel',
-      			query: {
-			        presets: ['es2015']
-			    }
+						loader: 'babel',
+						query: {
+							presets: ['es2015']
+					}
 			},
 			// templates
 			{ test: /\.tpl.html$/, loader:'ng-cache?prefix=[dir]/[dir]' }
@@ -56,15 +56,11 @@ var webpackConfig = {
 			allChunks: true
 		}),
 		new BowerWebpackPlugin({
-		    modulesDirectories: [ 'bower_components' ],
-		    manifestFiles:      'bower.json',
-		    includes:           /.*/,
-		    excludes:           /.*\.less/,
-		    searchResolveModulesDirectories: true
-		}),
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			jQuery: 'jquery'
+				modulesDirectories: [ 'bower_components' ],
+				manifestFiles:      'bower.json',
+				includes:           /.*/,
+				excludes:           /.*\.less/,
+				searchResolveModulesDirectories: true
 		}),
 		new ngAnnotatePlugin()
 	]
@@ -77,12 +73,12 @@ if(process.env.NODE_ENV == 'development') {
 } else if(process.env.NODE_ENV == 'production') {
 	webpackConfig.plugins.push(
 		new webpack.optimize.UglifyJsPlugin({
-        	compress: {
-        		warnings: false
-        	},
-        	mangle: false
-        })
-    );
+					compress: {
+						warnings: false
+					},
+					mangle: false
+				})
+		);
 }
 
 module.exports = webpackConfig;

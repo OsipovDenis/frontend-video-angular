@@ -24,14 +24,10 @@ const editItemController = function($state, $stateParams, dataService) {
 
 	this.updateItem = function(){
 		dataService.updateVideo(self.id, self.item)
-		.then((resp) => {
-			if(resp.status === 200) {
-				self.id = null;
-				self.item = null;
-				$state.go('table');
-			} else {
-				alert('ooops! Something wrong! Try update VIDEO again or later!');
-			}
+		.then(function() {
+			self.id = null;
+			self.item = null;
+			$state.go('table');
 		});
 	}
 

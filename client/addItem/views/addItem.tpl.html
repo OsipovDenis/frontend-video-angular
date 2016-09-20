@@ -5,7 +5,7 @@
 				<div class = "header-add-item">
 					<h1>Add New Course</h1>
 				</div>
-				<form class = "add-content-wrap" name = "formAddItem">
+				<form class = "add-content-wrap" name = "formAddItem" ng-submit = "addItemCtrl.addItem()">
 					<div class = "form-group">
 						<label class = "label-text" for = "title">
 							Course Title *
@@ -14,6 +14,7 @@
 									type = "text" 
 									placeholder = "title"
 									name = "title" 
+									id = "title"
 									class = "form-input"
 									ng-model = "addItemCtrl.item.title"
 									ng-model-options = "{ updateOn: 'blur' }" 
@@ -33,6 +34,7 @@
 									placeholder = "link"
 									class = "form-input"
 									name = "link"
+									id = "link"
 									ng-pattern = "/^((http|https)?\:\/\/)[A-Za-z\-\.]*/"
 									ng-model = "addItemCtrl.item.link"
 									ng-model-options =  " { updateOn: 'blur' }"
@@ -54,12 +56,12 @@
 						</label>
 						<select 
 										class = "form-input"
-										placeholder = "author"
+										id = "author"
 										ng-model = "addItemCtrl.item.author"
 										ng-model-options = "{ updateOn: 'blur' }" 
 										name = "user">
 							<option 
-											ng-repeat="user in addItemCtrl.users" 
+											ng-repeat="user in addItemCtrl.users track by user.name"
 											value='{{user.name}}'>{{::user.name}}</option>
 						</select>
 					</div>
@@ -72,6 +74,7 @@
 									placeholder = "HH:MM:SS"
 									class = "form-input"
 									name = "duration"
+									id = "duration"
 									ng-pattern = "/^([0-1]\d|2[0-3])(:[0-5]\d){2}$/" 
 									ng-model = "addItemCtrl.item.duration"
 									ng-model-options = "{ updateOn: 'blur' }">
@@ -85,7 +88,6 @@
 						<button 
 										class = "btn"
 										ng-class = "{'btn-confirm' : !formAddItem.$invalid}"
-										ng-click = "addItemCtrl.addItem()"
 										ng-disabled = "formAddItem.$invalid">Add</button>
 						<button 
 										class = "btn btn-confirm" 

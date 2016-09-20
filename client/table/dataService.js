@@ -1,61 +1,52 @@
 'use strict';
 
-const dataService = function($http, $q) {
+const dataService = function($http, $q, $window) {
   var urlConst = 'https://angular-video-service.firebaseio.com/videos',
       service = {
         getAllVideos: function() {
           return $http.get(urlConst + '.json')
-                  .then((response) => {
-                    return response;
-                  })
-                  .then((response) => {
+                  .then(function(response) {
                     var data = response.data;
                     // transform response to array
                     var reformattedArray = Object.keys(data).map(function(key) {
-                      var tempObj = data[key];
-                          tempObj.id = key;
-                      return tempObj;
+                      return angular.merge(data[key], {id: key});
                     });
                     return $q.when(reformattedArray)
                   })
-                  .catch((status) => {
-                    console.warn('Потеря связи с сервером!', status);
+                  .catch(function(error) {
+                    $window.alert('OOps something wrong! Try to add new course later.')
+                    console.warn('Потеря связи с сервером!', error);
                   });
         },
         getVideo: function(id) {
           return  $http.get(urlConst + '.json')
-                  .then((response) => {
-                    return response;
+                  .then(function(response) {
+                    return response.data[id];
                   })
-                  .then((resp) => {
-                    return resp.data[id];
+                  .catch(function(error) {
+                    $window.alert('OOps something wrong! Try to add new course later.')
+                    console.warn('Потеря связи с сервером!', error);
                   });
         },
         postVideo: function(item) {
           return  $http.post(urlConst + '.json', item)
-                  .then((data) => {
-                    return $q.when(data);
-                  })
-                  .catch((status) => {
-                    console.warn('Потеря связи с сервером!', status);
-                  })
+                  .catch(function(error) {
+                    $window.alert('OOps something wrong! Try to add new course later.')
+                    console.warn('Потеря связи с сервером!', error);
+                  });
         },
         deleteVideo: function(id) {
           return $http.delete(urlConst + '/' + id + '.json')
-                  .then((data) => {
-                    return $q.when(data);
-                  })
-                  .catch((status) => {
-                    console.warn('Потеря связи с сервером!', status);
+                  .catch(function(error) {
+                    $window.alert('OOps something wrong! Try to add new course later.')
+                    console.warn('Потеря связи с сервером!', error);
                   })
         },
         updateVideo: function(id, item){
           return $http.patch(urlConst + '/' + id + '.json', item)
-                  .then((data) => {
-                    return $q.when(data);
-                  })
-                  .catch((status) => {
-                    console.warn('Потеря связи с сервером!', status);
+                  .catch(function(error) {
+                    $window.alert('OOps something wrong! Try to add new course later.')
+                    console.warn('Потеря связи с сервером!', error);
                   })
         },
         toUpdateSomeVideos: function(arrToPushItems){
@@ -64,14 +55,11 @@ const dataService = function($http, $q) {
             arrForUpdate.push(service.updateVideo(item.id, item));
           });
           return $q.all(arrForUpdate)
-                  .then((response) => {
-                    return $q.when(response)
-                  })
-                  .catch((status) => {
-                    console.warn('Потеря связи с сервером!', status);
+                  .catch(function(error) {
+                    $window.alert('OOps something wrong! Try to add new course later.')
+                    console.warn('Потеря связи с сервером!', error);
                   });
         }
-
       }
   
   return service;

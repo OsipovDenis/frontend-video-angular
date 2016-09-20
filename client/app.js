@@ -33,7 +33,7 @@ video.run(function($rootScope,$state,LoginService) {
 	
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, error) {
 		
-		if(toState.name != 'login' && !LoginService.isAuthorized()) {
+		if(toState.name !== 'login' && !LoginService.isAuthorized()) {
 			event.preventDefault();
 			alert('Please, login');
 			$state.go('login');

@@ -5,7 +5,7 @@ const addItemController = function($state, dataService) {
 
 	this.item = null;
 	this.users = [
-		{ 'name' :'John' },
+		{ 'name' : 'John' },
 		{ 'name' : 'Anton' },
 		{ 'name' : 'Wazgen' },
 		{ 'name' : 'Boris' },
@@ -16,13 +16,9 @@ const addItemController = function($state, dataService) {
 		self.item.archived = false;
 
 		dataService.postVideo(this.item)
-			.then((data) => {
-				if (data.status === 200) {
+			.then(function(data) {
 					self.item = null;
 					$state.go('table');
-				} else {
-					alert('ooops! Something wrong! Try again or later!');
-				}
 			})
 	}
 

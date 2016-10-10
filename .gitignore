@@ -2,3 +2,5 @@ node_modules
 bower_components
 task
 build
+.DS_Store
+client/.DS_Store

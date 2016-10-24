@@ -3,7 +3,7 @@
 const addItem = angular.module('addItem', []);
 
 addItem.config(($stateProvider) => {
-	
+
 	$stateProvider
 		.state('addItem', {
 			parent: 'mainHeader',
@@ -11,6 +11,9 @@ addItem.config(($stateProvider) => {
 			template: '<add-item></add-item>'
 		})
 });
+
+
+
 
 import addItemDirective from './addItemDirective';
 
